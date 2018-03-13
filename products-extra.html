@@ -148,7 +148,7 @@
         <!-- end .page title-->
         <form class="ui form">
           <div class="field">
-              <label>Chọn sản phẩm:</label>
+            <label>Chọn sản phẩm:</label>
             <select class="ui search dropdown" ng-model="product_id">
               <option value="">Chọn sản phẩm</option>
               <option ng-repeat="prod in prods" value="{{prod.id}}">{{prod.code}} - {{prod.name}}</option>
@@ -220,14 +220,27 @@
       $scope.sotiennhap = 0;
 
       var productUrl = 'http://localhost:1337/product';
+      var productExtra = 'http://localhost:1336/product_extra';
       $http.get(productUrl).success(function (response) {
         $scope.prods = response;
       });
 
-      $scope.addToWareHouse = function(){
-        
-      }
-    }
+      $scope.addToWareHouse = function () {
+          let param = {
+            product_id: $scope.product_id,
+            import_quantity: $scope.soluongnhap,
+            import_price: $scope.sotiennhap
+          };
+          $("#add").addClass('loading');
+
+          $http.post(productExtra, param).success(function (response) {
+              toastr.success('Thêm mới sản phẩm thành công');
+              $("#add").removeClass('loading');
+              $scope.product_id = '';
+              $scope.soluongnhap = 0;
+              $scope.sotiennhap = 0;
+            }
+          }
   </script>
   <div class="footer">
     <span class="footer-text left">ver 0.3</span>
