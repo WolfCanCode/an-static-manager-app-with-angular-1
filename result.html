@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Hà Tools</title>
+  <meta name="keywords" content="HTML5,CSS3,Admin Template" />
+  <meta name="description" content="" />
+  <meta name="Author" content="HaTool" />
+
+  <!-- mobile settings -->
+  <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+  <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+
+  <!-- WEB FONTS : use %7C instead of | (pipe) -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700"
+    rel="stylesheet" type="text/css" />
+
+  <!-- CORE CSS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/ui/jquery-ui.css" rel="stylesheet">
+  <!-- THEME CSS -->
+  <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/theme/dark.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+  <link rel="manifest" href="/manifest.json">
+  <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.css"
+    rel="stylesheet" type="text/css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+  <script src="assets/plugins/calendar/moment.min.js"></script>
+  <script src="assets/plugins/ui/jquery-ui.js"></script>
+  <script src="assets/js/jquery.canvasjs.min.js"></script>
+  <script src="assets/js/canvasjs.min.js"></script>
+
+
+
+</head>
+
+<body ng-app="">
+
+  <!-- wrapper -->
+  <div id="wrapper">
+    <!-- BEGIN HEADER -->
+    <div class="page-header navbar fixed-top">
+      <!-- BEGIN HEADER INNER -->
+      <div class="page-header-inner ">
+        <!-- BEGIN LOGO -->
+        <div class="menu-toggler sidebar-toggler">
+          <h2 style="font-size: 20px;
+            float: right;
+            margin-left: 25px;
+            color: white;"> Hà Tools</h2>
+
+          <a href="javascript:;" id="menubtn" class="navbar-minimalize minimalize-styl-2  float-left "><i class="fa fa-bars"></i></a>
+        </div>
+      </div>
+      <!-- END LOGO -->
+
+      <!-- BEGIN TOP NAVIGATION MENU -->
+
+      <!-- END USER LOGIN DROPDOWN -->
+      <!-- BEGIN QUICK SIDEBAR TOGGLER -->
+      <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+
+      <!-- END QUICK SIDEBAR TOGGLER -->
+    </div>
+    <!-- END TOP NAVIGATION MENU -->
+    <!-- END HEADER INNER -->
+  </div>
+  <!-- END HEADER -->
+  <!-- BEGIN HEADER & CONTENT dropdown-divider -->
+  <div class="clearfix"> </div>
+  <!-- END HEADER & CONTENT dropdown-divider -->
+
+  <!-- BEGIN CONTAINER -->
+  <div class="page-container" ng-controller="moneyController">
+
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <ul class="metismenu" id="menu">
+          <li class="">
+            <a href="/"><i class="icon options"></i> <span class="nav-label">Quản lý chung</span></a>
+
+
+          </li>
+          <li class="">
+            <a href="/products"><i class="icon shopping bag"></i> <span class="nav-label">Thêm đơn hàng</span></a>
+          </li>
+          <li class="active">
+            <a href="/result"><i class="icon industry"></i> <span class="nav-label">Thống kê hàng</span></a>
+          </li>
+        </ul>
+        <!-- END SIDEBAR MENU -->
+        <!-- END SIDEBAR MENU -->
+      </nav>
+      <!-- END SIDEBAR -->
+    </aside>
+
+    <!-- BEGIN CONTENT BODY -->
+    <div class="page-content-wrapper">
+      <div class="content-wrapper container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="page-title">
+
+              <h4 class="float-left">Thống kê hàng</h4>
+
+
+            </div>
+          </div>
+        </div>
+        <!-- end .page title-->
+        <form class="ui form">
+          <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
+        </form>
+      </div>
+
+    </div>
+    <!-- END CONTENT BODY -->
+    <!-- END CONTAINER -->
+    <!-- /wrapper -->
+
+
+    <!-- SCROLL TO TOP -->
+
+    <!-- /PRELOADER -->
+  </div>
+  <script>
+    $('.menu-toggler').click(function () {
+      if ($('.sidebar').hasClass("sidebar-right")) {
+        $('.sidebar').removeClass('sidebar-right');
+        $('.page-content-wrapper').removeClass('blur-backdrop');
+      } else {
+        $('.sidebar').addClass('sidebar-right');
+        $('.page-content-wrapper').addClass('blur-backdrop');
+      }
+    })
+
+    $('.page-content-wrapper').click(function () {
+      $('.sidebar').removeClass('sidebar-right');
+      $('.page-content-wrapper').removeClass('blur-backdrop');
+    })
+
+    function moneyController($scope, $http) {
+
+      /* DECLARE */
+
+
+
+      var myUrl = "http://52.41.8.125:82/users";
+      if (getCookie("keyHaTool") != "hakhung" || getCookie("keyHaTool") == "") {
+        //auth(); 
+        controller();
+      } else controller();
+      /* On INIT */
+      function auth() {
+        swal({
+          title: 'Đăng nhập',
+          input: 'password',
+          confirmButtonText: 'Đăng nhập',
+          showLoaderOnConfirm: true,
+          preConfirm: function (email) {
+            return new Promise(function (resolve, reject) {
+              setTimeout(function () {
+                if (email != 'hakhung') {
+                  reject('Sai mật khẩu')
+                } else {
+                  resolve()
+                }
+              }, 1000)
+            })
+          },
+          allowOutsideClick: false
+        }).then(function () {
+          swal({
+            type: 'success',
+            title: 'Mật khẩu xác nhận',
+            html: 'Chào mừng bạn đến với Hà Tools'
+          });
+          setCookie("keyHaTool", "hakhung", 1);
+          controller();
+        }, function (dismiss) {
+          auth();
+        })
+      }
+
+      function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + "quanly.wolfhub.co";
+      }
+
+      function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+
+
+      function controller() {
+        /**
+         * On init
+         **/
+         setCookie("keyHaTool", "hakhung", 1);
+        $scope.listItem = [];
+        $scope.sumPercentLai = 0;
+
+        $http.get(myUrl).success(function (response) {
+          for (var i = 0; i < response.length; i++) {
+            var lai = response[i].xuat - response[i].nhap -
+              (response[i].tienship / response[i].soluong);
+            response[i].percentLai = lai / response[i].nhap * 100;
+          }
+          $scope.listItem = response;
+
+          $scope.listItem.sort(function (a, b) {
+            return parseFloat(b.percentLai) - parseFloat(a.percentLai);
+          })
+
+          for (var i = 0; i < 5; i++) {
+            $scope.sumPercentLai += $scope.listItem[i].percentLai;
+          }
+          console.log($scope.listItem);
+          //chart
+          moment.locale();
+          var chart = new CanvasJS.Chart("chartContainer", {
+            theme: "light2", // "light1", "light2", "dark1", "dark2"
+            exportEnabled: true,
+            animationEnabled: true,
+            title: {
+              text: "Top 5 đơn hàng bán lời nhất"
+            },
+            data: [{
+              type: "pie",
+              startAngle: 25,
+              toolTipContent: "<b>{label}</b>: {y}%",
+              showInLegend: "true",
+              legendText: "{label}",
+              indexLabelFontSize: 16,
+              indexLabel: " ",
+              dataPoints: [{
+                  y: Math.round(($scope.listItem[0].percentLai / $scope.sumPercentLai * 100) * 100) / 100,
+                  label: $scope.listItem[0].tensanpham + ' (' + moment($scope.listItem[0].createdAt).format(
+                    'L') + ')'
+                },
+                {
+                  y: Math.round(($scope.listItem[1].percentLai / $scope.sumPercentLai * 100) * 100) / 100,
+                  label: $scope.listItem[1].tensanpham + ' (' + moment($scope.listItem[1].createdAt).format(
+                    'L') + ')'
+                },
+                {
+                  y: Math.round(($scope.listItem[2].percentLai / $scope.sumPercentLai * 100) * 100) / 100,
+                  label: $scope.listItem[2].tensanpham + ' (' + moment($scope.listItem[2].createdAt).format(
+                    'L') + ')'
+                },
+                {
+                  y: Math.round(($scope.listItem[3].percentLai / $scope.sumPercentLai * 100) * 100) / 100,
+                  label: $scope.listItem[3].tensanpham + ' (' + moment($scope.listItem[3].createdAt).format(
+                    'L') + ')'
+                },
+                {
+                  y: Math.round(($scope.listItem[4].percentLai / $scope.sumPercentLai * 100) * 100) / 100,
+                  label: $scope.listItem[4].tensanpham + ' (' + moment($scope.listItem[4].createdAt).format(
+                    'L') + ')'
+                }
+              ]
+            }]
+          });
+          chart.render();
+
+
+        });
+
+
+
+
+
+      }
+    }
+  </script>
+  <div class="footer">
+    <span class="footer-text left">ver 0.3</span>
+    <span class="footer-text right">Ha Tools application</span>
+  </div>
+</body>
+
+</html>

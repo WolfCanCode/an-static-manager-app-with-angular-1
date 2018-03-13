@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Hà Tools</title>
+    <meta name="keywords" content="HTML5,CSS3,Admin Template" />
+    <meta name="description" content="" />
+    <meta name="Author" content="HaTool" />
+
+    <!-- mobile settings -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+
+    <!-- WEB FONTS : use %7C instead of | (pipe) -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700"
+        rel="stylesheet" type="text/css" />
+
+    <!-- CORE CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/simple-line-icons-master/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/animate/animate.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/ui/jquery-ui.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/plugins/toastr/toastr.min.css" />
+    <!-- THEME CSS -->
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/theme/dark.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+    <link rel="manifest" href="/manifest.json">
+    <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.css"
+        rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+    <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+    <script src="assets/plugins/calendar/moment.min.js"></script>
+    <script src="assets/plugins/toastr/toastr.min.js"></script>
+    <script src="assets/plugins/ui/jquery-ui.js"></script>
+
+
+    <!-- PAGE LEVEL SCRIPTS -->
+
+</head>
+
+<body ng-app="">
+
+    <div id="wrapper" ng-controller="moneyController">
+        <!-- BEGIN HEADER -->
+        <div class="page-header navbar fixed-top">
+            <!-- BEGIN HEADER INNER -->
+            <div class="page-header-inner ">
+                <!-- BEGIN LOGO -->
+
+                <div class="menu-toggler sidebar-toggler">
+                    <h2 style="font-size: 20px;
+                    float: right;
+                    margin-left: 25px;
+                    color: white;"> Hà Tools</h2>
+
+                    <a href="javascript:;" id="menubtn" class="navbar-minimalize minimalize-styl-2  float-left ">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+
+                <!-- END LOGO -->
+
+                <!-- BEGIN TOP NAVIGATION MENU -->
+
+                <!-- END TOP NAVIGATION MENU -->
+            </div>
+            <!-- END HEADER INNER -->
+        </div>
+        <!-- END HEADER -->
+        <!-- BEGIN HEADER & CONTENT dropdown-divider -->
+        <div class="clearfix"> </div>
+        <!-- END HEADER & CONTENT dropdown-divider -->
+
+        <!-- BEGIN CONTAINER -->
+        <div class="page-container">
+
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <ul class="metismenu" id="menu">
+                        <li class="">
+                            <a href="/">
+                                <i class="icon options"></i>
+                                <span class="nav-label">Quản lý chung</span>
+                            </a>
+
+
+                        </li>
+                        <li class="">
+                            <a href="#" style="background: lightslategrey !important;">
+                                <span class="nav-label">Quản trị</span>
+                            </a>
+
+
+                        </li>
+                        <li class="">
+                            <a href="/products">
+                                <i class="icon shopping bag"></i>
+                                <span class="nav-label">Sản phẩm</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="/products">
+                                <i class="icon shopping bag"></i>
+                                <span class="nav-label">Nhập lô</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="/products">
+                                <i class="icon shopping bag"></i>
+                                <span class="nav-label">Thêm kh</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="/result">
+                                <i class="icon industry"></i>
+                                <span class="nav-label">Thống kê hàng</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- END SIDEBAR MENU -->
+                    <!-- END SIDEBAR MENU -->
+                </nav>
+                <!-- END SIDEBAR -->
+            </aside>
+
+            <!-- BEGIN CONTENT BODY -->
+            <div class="page-content-wrapper">
+                <div class="content-wrapper container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="page-title">
+
+                                <h4 class="float-left">Quản lý chung</h4>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end .page title-->
+                    <div class="row">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="panel panel-card recent-activites">
+                                <!-- Start .panel -->
+
+                                <div class="card-block text-xs-center">
+                                    <strong>Tiền Lãi</strong>
+                                    <i class="icon-bag widget-icon"></i>
+                                    <h1 class="right panel-middle margin-b-0">{{lai | number : fractionSize}} Đ</h1>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <!-- End .panel -->
+
+
+
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="panel panel-card recent-activites">
+                                <!-- Start .panel -->
+
+                                <div class="card-block text-xs-center">
+                                    <strong>Tỉ lệ Lãi</strong>
+                                    <i class="icon-graph widget-icon"></i>
+                                    <h1 class="right panel-middle margin-b-0">{{phantram | number : fractionSize}} %</h1>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <!-- End .panel -->
+
+
+
+                        </div>
+
+                        <div class="col-md-6 col-lg-3">
+                            <div class="panel panel-card recent-activites">
+                                <!-- Start .panel -->
+
+                                <div class="card-block text-xs-center">
+                                    <strong>Tiền vốn</strong>
+                                    <i class="icon-credit-card widget-icon"></i>
+                                    <h1 class="right panel-middle margin-b-0">{{tongnhap | number : fractionSize}} Đ</h1>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <!-- End .panel -->
+
+
+
+                        </div>
+
+                        <div class="col-md-6 col-lg-3">
+                            <div class="panel panel-card recent-activites">
+                                <!-- Start .panel -->
+
+                                <div class="card-block text-xs-center">
+                                    <strong>Đơn hàng</strong>
+                                    <i class="icon-basket-loaded widget-icon"></i>
+                                    <h1 class="right panel-middle margin-b-0">{{lengthTong}} cái</h1>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <!-- End .panel -->
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+
+                            <div class="panel panel-card recent-activites">
+                                <!-- Start .panel -->
+                                <div class="fourteen wide tablet fourteen computer column ui calendar" style="margin-bottom:5px" id="month">
+                                    <div class="ui input left icon">
+                                        <i class="time icon"></i>
+                                        <input type="text" placeholder="Đơn hàng tháng" id="monthYear" ng-keypress="$event.keyCode === 13 && search()">
+                                    </div>
+                                </div>
+                                <div class="ui icon input" id="search">
+                                    <input type="text" placeholder="Tìm tên sản phẩm..." ng-model="keySearch" ng-keypress="$event.keyCode === 13 && search()">
+                                    <i class="search link icon" ng-click="search()"></i>
+                                </div>
+                                <button id="clearBtn" class="ui compact icon button" ng-if="keySearch!='';" ng-click="clearSearch()">
+                                    <i class="windows close icon"></i>
+                                </button>
+
+                                <div class=" text-xs-center">
+                                    <div class="table-responsive table-commerce">
+                                        <table class="table table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th class="w80">
+                                                        <strong>ID</strong>
+                                                    </th>
+                                                    <th>
+                                                        <strong>Ngày nhận</strong>
+                                                    </th>
+                                                    <th>
+                                                        <strong>Tên hàng</strong>
+                                                    </th>
+                                                    <th>
+                                                        <strong>Tiền nhập</strong>
+                                                    </th>
+                                                    <th>
+                                                        <strong>Tiền bán</strong>
+                                                    </th>
+                                                    <th>
+                                                        <strong>Số lượng</strong>
+                                                    </th>
+                                                    <th>
+                                                        <strong>Phí ship</strong>
+                                                    </th>
+                                                    <th>
+                                                        <strong>Tiền lãi</strong>
+                                                    </th>
+                                                    <th>
+                                                        <strong>% lãi</strong>
+                                                    </th>
+                                                    <th class="text-xs-center">
+                                                        <strong>Action</strong>
+                                                    </th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="line in list track by $index">
+                                                    <td>
+                                                        <div class="ui ribbon label">{{$index+1}}</div>
+                                                    </td>
+                                                    <td>{{line.createdAt | date:'dd-MM-yyyy (HH:mm:ss)' }}</td>
+                                                    <td>{{line.tensanpham}}</td>
+                                                    <td>{{line.nhap | number : fractionSize}} Đ</td>
+                                                    <td>{{line.xuat| number : fractionSize}} Đ</td>
+                                                    <td>{{line.soluong}}</td>
+                                                    <td>{{line.tienship}}</td>
+
+                                                    <td>{{(line.xuat*line.soluong)-(line.nhap*line.soluong) - line.tienship |
+                                                        number : fractionSize}} Đ
+                                                    </td>
+                                                    <td>{{(line.xuat*line.soluong-line.tienship)/(line.nhap*line.soluong)*100-100
+                                                        | number : fractionSize}}%
+                                                    </td>
+                                                    <td class="text-xs-center">
+                                                        <button class="negative ui button" ng-click="deleteLine(line)" id="delete{{line.id}}">
+                                                            Xóa
+                                                        </button>
+                                                    </td>
+
+                                                </tr>
+
+                                            </tbody>
+                                            <tfoot ng-if="list.length !=0">
+                                                <tr>
+                                                    <th colspan="3">
+                                                        <div class="ui left floated pagination menu">
+                                                            <a class="icon item" ng-click="prevPage()">
+                                                                <i class="left chevron icon"></i>
+                                                            </a>
+                                                            <a class="item" ng-repeat="page in listpage" ng-click="onPage(page-1)" id="page{{page}}">{{page}}</a>
+                                                            <a class="icon item" ng-click="nextPage()">
+                                                                <i class="right chevron icon"></i>
+                                                            </a>
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End .panel -->
+
+
+                        </div>
+                    </div>
+
+
+
+                    <!-- SCROLL TO TOP -->
+                    <a href="#" id="toTop"></a>
+
+
+                    <!-- PRELOADER -->
+                    <div id="preloader">
+                        <div class="inner">
+                            <span class="loader"></span>
+                        </div>
+                    </div>
+                    <!-- /PRELOADER -->
+
+
+
+                    <script>
+                        $('#datetime').calendar();
+                        $('#month').calendar({
+                            type: 'month'
+                        });
+
+                        $('.menu-toggler').click(function () {
+                            if ($('.sidebar').hasClass("sidebar-right")) {
+                                $('.sidebar').removeClass('sidebar-right');
+                                $('.page-content-wrapper').removeClass('blur-backdrop');
+                            } else {
+                                $('.sidebar').addClass('sidebar-right');
+                                $('.page-content-wrapper').addClass('blur-backdrop');
+                            }
+                        })
+
+                        $('.page-content-wrapper').click(function () {
+                            $('.sidebar').removeClass('sidebar-right');
+                            $('.page-content-wrapper').removeClass('blur-backdrop');
+                        })
+
+
+
+                        function moneyController($scope, $http) {
+
+                            /* DECLARE */
+                            $scope.nhap = "";
+                            $scope.xuat = "";
+                            $scope.soluong = "";
+                            $scope.lengthTong = 0;
+                            $scope.list = [];
+                            $scope.listTmp = [];
+                            $scope.curPage = 0;
+                            $scope.lai = 0;
+                            $scope.tongnhap = 0;
+                            $scope.phantram = 0;
+                            $scope.sopage = 0;
+                            $scope.listpage = [];
+                            $scope.tienship = "";
+                            $scope.curItems = 0;
+                            $scope.keySearch = "";
+                            $scope.donhangthang = moment(new Date()).format().split("-")[1];
+                            $scope.monthSearch = moment(new Date()).format().split("-")[0] + "-" +
+                                moment(new Date()).format().split("-")[1]; // init month search
+                            $("#monthYear").val($scope.monthSearch); //init month year
+                            $scope.messagedata = "Không có dữ liệu";
+                            $scope.tensanpham = "";
+                            $scope.thoigian = "";
+                            $scope.condition = 'where={"tensanpham":{"contains":"' + $scope.keySearch +
+                                '"},"createdAt":{"contains":"' + $scope.monthSearch + '"}}';
+
+
+                            var myUrl = "http://52.41.8.125:82/users";
+                            if (getCookie("keyHaTool") != "hakhung" || getCookie("keyHaTool") == "") {
+                                auth();
+                            } else controller();
+                            /* On INIT */
+                            function auth() {
+                                swal({
+                                    title: 'Đăng nhập',
+                                    input: 'password',
+                                    confirmButtonText: 'Đăng nhập',
+                                    showLoaderOnConfirm: true,
+                                    preConfirm: function (email) {
+                                        return new Promise(function (resolve, reject) {
+                                            setTimeout(function () {
+                                                if (email != 'hakhung') {
+                                                    reject('Sai mật khẩu')
+                                                } else {
+                                                    resolve()
+                                                }
+                                            }, 1000)
+                                        })
+                                    },
+                                    allowOutsideClick: false
+                                }).then(function () {
+                                    swal({
+                                        type: 'success',
+                                        title: 'Mật khẩu xác nhận',
+                                        html: 'Chào mừng bạn đến với ứng dụng quản lý lãi vốn'
+                                    });
+                                    setCookie("keyHaTool", "hakhung", 1);
+                                    controller();
+                                }, function (dismiss) {
+                                    // auth();
+                                    controller();
+
+                                })
+                            }
+
+                            function setCookie(cname, cvalue, exdays) {
+                                var d = new Date();
+                                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                                var expires = "expires=" + d.toUTCString();
+                                document.cookie = cname + "=" + cvalue + ";" + expires + "quanly.wolfhub.co";
+                            }
+
+                            function getCookie(cname) {
+                                var name = cname + "=";
+                                var decodedCookie = decodeURIComponent(document.cookie);
+                                var ca = decodedCookie.split(';');
+                                for (var i = 0; i < ca.length; i++) {
+                                    var c = ca[i];
+                                    while (c.charAt(0) == ' ') {
+                                        c = c.substring(1);
+                                    }
+                                    if (c.indexOf(name) == 0) {
+                                        return c.substring(name.length, c.length);
+                                    }
+                                }
+                                return "";
+                            }
+
+
+                            function controller() {
+                                /**
+                                 * On init
+                                 **/
+                                setCookie("keyHaTool", "hakhung", 1);
+                                $("#thoigian").focusout(function () {
+                                    $scope.thoigian = $("#thoigian").val();
+                                });
+
+                                $("#monthYear").focusout(function () {
+                                    $scope.monthSearch = convertMonthYear();
+                                    console.log($scope.monthSearch);
+                                });
+
+                                function convertMonthYear() {
+                                    var token = $("#monthYear").val().split(" ");
+                                    if (token[0] === "January") {
+                                        token[0] = "01";
+                                    } else if (token[0] === "February") {
+                                        token[0] = "02";
+                                    } else if (token[0] === "March") {
+                                        token[0] = "03";
+                                    } else if (token[0] === "April") {
+                                        token[0] = "04";
+                                    } else if (token[0] === "May") {
+                                        token[0] = "05";
+                                    } else if (token[0] === "June") {
+                                        token[0] = "06";
+                                    } else if (token[0] === "July") {
+                                        token[0] = "07";
+                                    } else if (token[0] === "August") {
+                                        token[0] = "08";
+                                    } else if (token[0] === "September") {
+                                        token[0] = "09";
+                                    } else if (token[0] === "October") {
+                                        token[0] = "10";
+                                    } else if (token[0] === "November") {
+                                        token[0] = "11";
+                                    } else if (token[0] === "December") {
+                                        token[0] = "12";
+                                    }
+                                    $scope.donhangthang = token[0];
+                                    return token[1] + "-" + token[0];
+                                }
+
+                                $http.get(myUrl + "?" + $scope.condition).success(function (response) {
+                                    $scope.listTmp = response;
+                                    if ($scope.listTmp.length != 0) {
+                                        $scope.messagedata = "Tìm thấy " + $scope.listTmp.length + " kết quả";
+                                    }
+                                    for (var i = 0; i < $scope.listTmp.length; i++) {
+                                        $scope.lai += ($scope.listTmp[i].xuat * $scope.listTmp[i].soluong) - (
+                                            $scope.listTmp[i]
+                                            .nhap *
+                                            $scope.listTmp[
+                                                i].soluong) - $scope.listTmp[i].tienship;
+                                        $scope.tongnhap += $scope.listTmp[i].nhap * $scope.listTmp[i].soluong;
+                                        $scope.lengthTong++;
+                                    }
+                                    $scope.phantram = $scope.lai / $scope.tongnhap * 100;
+                                    if (isNaN($scope.phantram)) {
+                                        $scope.phantram = 0;
+                                    }
+                                    $scope.sopage = Math.floor($scope.listTmp.length / 15);
+                                    for (var i = 0; i <= $scope.sopage; i++) {
+                                        $scope.listpage.push(i + 1);
+                                    }
+                                    $scope.onPage(0);
+                                    reload();
+
+                                });
+
+
+                                $scope.isEnter = function (event) //Enter to search
+                                {
+                                    if (keyEvent.which === 13)
+                                        $scope.search();
+                                }
+
+                                /**
+                                 *  On Paging
+                                 **/
+
+
+                                $scope.onPage = function (page) //default page1 15items
+                                {
+                                    if (page == 0) {
+                                        $http.get(myUrl + '?sort=createdAt DESC&limit=15' + "&" + $scope.condition).success(
+                                            function (
+                                                response) {
+                                                $scope.list = response;
+                                            });
+                                    } else {
+                                        $http.get(myUrl + '?skip=' + page * 15 + '&sort=createdAt DESC&limit=15' + "&" +
+                                                $scope.condition)
+                                            .success(
+                                                function (
+                                                    response) { //skip == page
+                                                    $scope.list = response;
+                                                });
+                                    }
+
+                                    for (var i = 0; i <= $scope.sopage + 1; i++) {
+                                        $('#page' + (i)).removeClass('active');
+                                    }
+
+                                    $('#page' + (page + 1)).addClass('active');
+                                    $scope.curPage = page;
+                                }
+
+
+                                /**
+                                 *  NEXT PAGE
+                                 **/
+
+                                $scope.nextPage = function () {
+                                    if ($scope.curPage < $scope.sopage && $scope.curPage >= 0)
+                                        $scope.onPage(++$scope.curPage);
+                                }
+
+                                /**
+                                 *  PREVIOUS PAGE
+                                 **/
+
+                                $scope.prevPage = function () {
+                                    if ($scope.curPage < $scope.sopage + 1 && $scope.curPage > 0)
+                                        $scope.onPage(--$scope.curPage);
+                                }
+
+                                /**
+                                 *  On Search
+                                 **/
+
+                                $scope.search = function () {
+                                    $scope.curPage = 0;
+                                    $("#search").addClass('loading');
+                                    console.log($scope.monthSearch);
+                                    $scope.condition = '&where={"tensanpham":{"contains":"' + $scope.keySearch +
+                                        '"},"createdAt":{"contains":"' + $scope.monthSearch + '"}}';
+                                    $scope.getall();
+                                }
+
+
+
+                                /**
+                                 *  Auto ajax
+                                 * 
+                                 **/
+                                function reload() {
+                                    $scope.getall();
+
+                                    setTimeout(function () {
+                                        reload();
+                                    }, 30000)
+                                }
+
+
+                                /**
+                                 * GET ALL
+                                 **/
+
+                                $scope.getall = function () {
+                                    $http.get(myUrl + "?" + $scope.condition).success(function (response) {
+                                        $("#search").removeClass('loading');
+                                        $scope.lai = 0;
+                                        $scope.phantram = 0;
+                                        $scope.tongnhap = 0;
+                                        $scope.lengthTong = 0;
+                                        $scope.listpage = [];
+                                        $scope.listTmp = response;
+                                        $scope.messagedata = "Tìm thấy " + $scope.listTmp.length +
+                                            " kết quả";
+                                        for (var i = 0; i < $scope.listTmp.length; i++) {
+                                            $scope.lai += ($scope.listTmp[i].xuat * $scope.listTmp[i].soluong) -
+                                                ($scope.listTmp[
+                                                        i].nhap *
+                                                    $scope.listTmp[
+                                                        i].soluong) - $scope.listTmp[i].tienship;
+                                            $scope.tongnhap += $scope.listTmp[i].nhap * $scope.listTmp[i].soluong;
+                                            $scope.lengthTong++;
+                                        }
+                                        $scope.phantram = $scope.lai / $scope.tongnhap * 100;
+                                        if (isNaN($scope.phantram)) {
+                                            $scope.phantram = 0;
+
+                                        };
+                                        $scope.sopage = Math.floor($scope.listTmp.length / 15);
+                                        for (var i = 0; i <= $scope.sopage; i++) {
+                                            $scope.listpage.push(i + 1);
+                                        }
+                                        $scope.onPage($scope.curPage);
+
+                                    });
+
+                                }
+
+
+                                /**
+                                 *   CLEAR SEARCH
+                                 **/
+
+                                $scope.clearSearch = function () {
+                                    $scope.keySearch = '';
+                                    $scope.search();
+                                }
+
+                                /**
+                                 *  DELETE LINE
+                                 **/
+
+                                $scope.deleteLine = function (line) {
+                                    swal({
+                                        title: "Cưng tính xóa cái [<span class='bluetext'>" + line.tensanpham +
+                                            "</span>] hả?",
+                                        text: "Chắc chưa cưng xóa là mất đó!",
+                                        type: 'warning',
+                                        showCancelButton: true,
+                                        confirmButtonColor: '#3085d6',
+                                        cancelButtonColor: '#d33',
+                                        confirmButtonText: 'Oke chắc rồi!',
+                                        cancelButtonText: 'Ấn nhầm !',
+                                        confirmButtonClass: 'ui green button',
+                                        cancelButtonClass: 'ui red button',
+                                        buttonsStyling: false
+                                    }).then(function () {
+                                            $("#delete" + line.id).addClass("loading");
+                                            $http.delete(myUrl + '/' + line.id).success(function () {
+                                                swal(
+                                                    'Đã xóa!',
+                                                    'Đơn hàng đã bị xóa',
+                                                    'success'
+                                                )
+                                                $scope.getall();
+                                                $("#delete" + line.id).removeClass("loading");
+                                                $scope.lengthTong--;
+                                            });
+                                        },
+                                        function (dismiss) {
+
+                                        })
+
+
+                                }
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <span class="footer-text left">ver 0.3</span>
+            <span class="footer-text right">Ha Tools application</span>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
