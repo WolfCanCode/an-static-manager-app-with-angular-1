@@ -260,7 +260,7 @@
           $scope.curPage = 0;
           $scope.keySearch = '';
           $scope.condition = 'where={"code":{"contains":"' + $scope.keySearch + '"}}';
-          var myUrl = 'http://localhost:1337/product';
+          var myUrl = 'http://52.41.8.25:1337/product';
 
           $http.get(myUrl).success(function (response) {
             $scope.onPage($scope.curPage);
@@ -274,7 +274,7 @@
                 $scope.prods = response;
                 response.forEach((prod, index) => {
                   let quantity = 0;
-                  $http.get('http://localhost:1337/product_extra?product_id=' + prod.id).success(function (
+                  $http.get('http://52.41.8.25:1337/product_extra?product_id=' + prod.id).success(function (
                     result) {
                     result.forEach(item => {
                       quantity += item.import_quantity;
@@ -335,7 +335,7 @@
 
           $scope.quantity = function (product_id) {
             let quantity = 0;
-            $http.get('http://localhost:1337/product_extra?product_id=1').success(function (response) {
+            $http.get('http://52.41.8.25:1337/product_extra?product_id=1').success(function (response) {
               response.forEach(item => {
                 quantity += item.import_quantity;
               });
