@@ -104,27 +104,10 @@
           <li class="">
             <a href="/products" style="background:#0D47A1">
               <i class="icon shopping bag"></i>
-              <span class="nav-label">Thêm sp</span>
+              <span class="nav-label">Sản phẩm</span>
             </a>
           </li>
-          <li class="">
-            <a href="/products">
-              <i class="icon shopping bag"></i>
-              <span class="nav-label">Nhập lô</span>
-            </a>
-          </li>
-          <li class="">
-            <a href="/products">
-              <i class="icon shopping bag"></i>
-              <span class="nav-label">Thêm kh</span>
-            </a>
-          </li>
-          <li class="active">
-            <a href="/result">
-              <i class="icon industry"></i>
-              <span class="nav-label">Thống kê hàng</span>
-            </a>
-          </li>
+
         </ul>
         <!-- END SIDEBAR MENU -->
         <!-- END SIDEBAR MENU -->
@@ -220,7 +203,7 @@
       $scope.sotiennhap = 0;
 
       var productUrl = 'http://localhost:1337/product';
-      var productExtra = 'http://localhost:1336/product_extra';
+      var productExtra = 'http://localhost:1337/product_extra';
       $http.get(productUrl).success(function (response) {
         $scope.prods = response;
       });
@@ -236,11 +219,11 @@
           $http.post(productExtra, param).success(function (response) {
               toastr.success('Thêm mới sản phẩm thành công');
               $("#add").removeClass('loading');
-              $scope.product_id = '';
               $scope.soluongnhap = 0;
               $scope.sotiennhap = 0;
-            }
+            });
           }
+    }
   </script>
   <div class="footer">
     <span class="footer-text left">ver 0.3</span>

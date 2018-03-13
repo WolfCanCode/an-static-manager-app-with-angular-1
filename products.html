@@ -107,24 +107,6 @@
               <span class="nav-label">Sản phẩm</span>
             </a>
           </li>
-          <li class="">
-            <a href="/products">
-              <i class="icon shopping bag"></i>
-              <span class="nav-label">Nhập lô</span>
-            </a>
-          </li>
-          <li class="">
-            <a href="/products">
-              <i class="icon shopping bag"></i>
-              <span class="nav-label">Thêm kh</span>
-            </a>
-          </li>
-          <li class="active">
-            <a href="/result">
-              <i class="icon industry"></i>
-              <span class="nav-label">Thống kê hàng</span>
-            </a>
-          </li>
         </ul>
         <!-- END SIDEBAR MENU -->
         <!-- END SIDEBAR MENU -->
@@ -138,7 +120,12 @@
             <div class="page-title">
 
               <h4 class="float-left">Sản phẩm</h4>
-              <button class="positive ui button float-right"><a href="/add" style="color:white">Thêm sản phẩm</a></button>
+              <button class="positive ui button float-right">
+                <a href="/product-add" style="color:white">Thêm sản phẩm</a>
+              </button>
+              <button class="primary ui button float-right">
+                <a href="/product-extra" style="color:white">Nhập hàng</a>
+              </button>
 
 
             </div>
@@ -203,11 +190,8 @@
                         <td>{{prod.name}}</td>
                         <td>{{prod.retail_price| number : fractionSize}} Đ</td>
                         <td>{{prod.many_price| number : fractionSize}} Đ</td>
-                        <td></td>
+                        <td>{{prod.quantity}}</td>
                         <td class="text-xs-center">
-                          <button class="primary ui button" ng-click="deleteLine(line)" id="delete{{line.id}}">
-                            Nhập hàng
-                          </button>
                           <button class="negative ui button" ng-click="deleteProd(prod)" id="delete{{prod.id}}">
                             Xóa
                           </button>
@@ -286,11 +270,20 @@
           {
             $("#search").removeClass('loading');
             if (page == 0) {
-              $http.get(myUrl + '?sort=createdAt DESC&limit=15' + "&" + $scope.condition).success(
-                function (
-                  response) {
-                  $scope.prods = response;
+              $http.get(myUrl + '?sort=createdAt DESC&limit=15' + "&" + $scope.condition).success(function (response) {
+                $scope.prods = response;
+                response.forEach((prod, index) => {
+                  let quantity = 0;
+                  $http.get('http://localhost:1337/product_extra?product_id=' + prod.id).success(function (
+                    result) {
+                    result.forEach(item => {
+                      quantity += item.import_quantity;
+                    });
+                    $scope.prods[index].quantity = quantity;
+                  });
                 });
+              });
+
             } else {
               $http.get(myUrl + '?skip=' + page * 15 + '&sort=createdAt DESC&limit=15' + "&" +
                   $scope.condition)
@@ -337,41 +330,59 @@
           }
 
           /**
-                                 *  DELETE LINE
-                                 **/
+           *  WH item
+           **/
 
-                                $scope.deleteProd = function (prod) {
-                                    swal({
-                                        title: "Cưng tính xóa cái [<span class='bluetext'>" + prod.name +
-                                            "</span>] hả?",
-                                        text: "Chắc chưa cưng xóa là mất đó!",
-                                        type: 'warning',
-                                        showCancelButton: true,
-                                        confirmButtonColor: '#3085d6',
-                                        cancelButtonColor: '#d33',
-                                        confirmButtonText: 'Oke chắc rồi!',
-                                        cancelButtonText: 'Ấn nhầm !',
-                                        confirmButtonClass: 'ui green button',
-                                        cancelButtonClass: 'ui red button',
-                                        buttonsStyling: false
-                                    }).then(function () {
-                                            $("#delete" + prod.id).addClass("loading");
-                                            $http.delete(myUrl + '/' + prod.id).success(function () {
-                                                swal(
-                                                    'Đã xóa!',
-                                                    'Sản phẩm đã bị xóa',
-                                                    'success'
-                                                )
-                                                $scope.onPage($scope.curPage);
-                                                $("#delete" + prod.id).removeClass("loading");
-                                            });
-                                        },
-                                        function (dismiss) {
+          $scope.quantity = function (product_id) {
+            let quantity = 0;
+            $http.get('http://localhost:1337/product_extra?product_id=1').success(function (response) {
+              response.forEach(item => {
+                quantity += item.import_quantity;
+              });
 
-                                        })
+              return quantity;
+            })
+          }
+
+          /**
+           *  DELETE LINE
+           **/
+
+          $scope.deleteProd = function (prod) {
+            swal({
+              title: "Cưng tính xóa cái [<span class='bluetext'>" + prod.name +
+                "</span>] hả?",
+              text: "Chắc chưa cưng xóa là mất đó!",
+              type: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Oke chắc rồi!',
+              cancelButtonText: 'Ấn nhầm !',
+              confirmButtonClass: 'ui green button',
+              cancelButtonClass: 'ui red button',
+              buttonsStyling: false
+            }).then(function () {
+
+                $("#delete" + prod.id).addClass("loading");
+                $http.post(myUrl + '/delete', {
+                  id: prod.id
+                }).success(function () {
+                  swal(
+                    'Đã xóa!',
+                    'Sản phẩm đã bị xóa',
+                    'success'
+                  )
+                  $scope.onPage($scope.curPage);
+                  $("#delete" + prod.id).removeClass("loading");
+                });
+              },
+              function (dismiss) {
+
+              })
 
 
-                                }
+          }
 
         }
       </script>
