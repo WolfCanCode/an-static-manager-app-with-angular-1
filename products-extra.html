@@ -202,8 +202,8 @@
       $scope.soluongnhap = 0;
       $scope.sotiennhap = 0;
 
-      var productUrl = 'http://localhost:1337/product';
-      var productExtra = 'http://localhost:1337/product_extra';
+      var productUrl = 'http://52.41.8.25:1337/product';
+      var productExtra = 'http://52.41.8.25:1337/product_extra';
       $http.get(productUrl).success(function (response) {
         $scope.prods = response;
       });
